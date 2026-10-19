@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jana Pohlmann</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --sage: #d8e2d0;
+            --pink: #f3cddd;
+            --white: #fff;
+            --dark-green: #355e3b;
+            --text: #333;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--sage);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            background: var(--pink);
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 32px;
+            border-radius: 24px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .avatar {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid pink;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 56px;
+        }
+
+        h1 {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #111827;
+        }
+
+        .subtitle {
+            font-style: italic;
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        p {
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .skill-card {
+            background: #fff8fb;
+            border-radius: 18px;
+            padding: 18px;
+            text-align: center;
+            box-shadow: 8px 8px 12px rgba(53, 94, 59, 0.12);
+        }
+
+        .skill-image {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .skill-title {
+            color: var(--dark-green);
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .skill-text {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .books-section h2,
+        .recipes-section h2 {
+            font-family: "Times New Roman", Times, serif;
+            color: var(--dark-green);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .book-item {
+            background: rgba(255,255,255,0.7);
+            border-radius: 14px;
+            padding: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .book-title {
+            font-weight: bold;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .book-author {
+            color: #666;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+
+        .rating {
+            color: #d97706;
+            font-size: 0.85rem;
+        }
+
+        .like-btn {
+            border: none;
+            background: white;
+            border-radius: 999px;
+            width: 38px;
+            height: 38px;
+            cursor: pointer;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .liked {
+            background: #ffd6e7;
+        }
+
+        /* NEW RECIPES SECTION */
+
+        .recipes-section {
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .recipes-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .recipe-card {
+            background: rgba(255,255,255,0.7);
+            border-radius: 18px;
+            padding: 18px;
+            text-align: center;
+            box-shadow: 6px 6px 12px rgba(53,94,59,0.12);
+        }
+
+        .recipe-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .recipe-card h3 {
+            color: var(--dark-green);
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .recipe-card p {
+            font-size: 0.85rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .inquiry {
+            margin-top: 30px;
+            text-align: center;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 1100px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .recipes-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 800px) {
+
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills {
+                grid-template-columns: 1fr;
+            }
+
+            .recipes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 24px;
+            }
+
+            h1 {
+                font-size: 2.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+
+    <div class="header">
+
+        <div class="avatar">🧚🏻‍♀️</div>
+
+        <h1>Jana Pohlmann</h1>
+
+        <div class="subtitle">
+            podcast enthusiast • kitchen fairy • book worm • photographing
+        </div>
+
+    </div>
+
+    <div class="content-grid">
+
+        <div class="about-section">
+
+            <p>
+                Hello 👋! I'm Jana. I spend a lot of my free time discovering
+                new podcasts, getting creative in the kitchen, disappearing
+                into the pages of a good book, and capturing everyday moments
+                with a camera.
+            </p>
+
+            <p>
+                I'm happiest when I'm learning something new, trying a recipe
+                that might become a favorite 💗, or finding a story that keeps
+                me awake far past bedtime.
+            </p>
+
+            <p>
+                Whether it's listening to fascinating conversations, creating
+                a little magic ✨ in the kitchen, exploring new worlds through
+                reading, or photographing beautiful details, I enjoy the small
+                things that make everyday life interesting.
+            </p>
+
+            <div class="skills">
+
+                <div class="skill-card">
+                    <div class="skill-image">🎧</div>
+                    <div class="skill-title">Podcast Enthusiast</div>
+                    <div class="skill-text">
+                        Always searching for fascinating conversations and
+                        compelling stories.
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-image">🧁</div>
+                    <div class="skill-title">Kitchen Fairy</div>
+                    <div class="skill-text">
+                        Baking, experimenting with recipes, and sharing
+                        comforting food.
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-image">📷</div>
+                    <div class="skill-title">Photography</div>
+                    <div class="skill-text">
+                        Capturing little moments, interesting places,
+                        and everyday beauty.
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="books-section">
+
+            <h2>Favourite Books</h2>
+
+            <div class="books-grid">
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-title">Project Hail Mary</div>
+                        <div class="book-author">Andy Weir</div>
+                        <div class="rating">★★★★☆½ (4.5)</div>
+                    </div>
+                    <button class="like-btn" onclick="toggleLike(this)">♡</button>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-title">The Long Way to a Small Angry Planet</div>
+                        <div class="book-author">Becky Chambers</div>
+                        <div class="rating">★★★★☆ (4.0)</div>
+                    </div>
+                    <button class="like-btn" onclick="toggleLike(this)">♡</button>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-title">The Safekeep</div>
+                        <div class="book-author">Yael van der Wouden</div>
+                        <div class="rating">★★★★☆½ (4.5)</div>
+                    </div>
+                    <button class="like-btn" onclick="toggleLike(this)">♡</button>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-title">Klara and the Sun</div>
+                        <div class="book-author">Kazuo Ishiguro</div>
+                        <div class="rating">★★★★☆ (4.0)</div>
+                    </div>
+                    <button class="like-btn" onclick="toggleLike(this)">♡</button>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-title">Prima Facie</div>
+                        <div class="book-author">Suzie Miller</div>
+                        <div class="rating">★★★★★ (5.0)</div>
+                    </div>
+                    <button class="like-btn" onclick="toggleLike(this)">♡</button>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-title">Yesteryear</div>
+                        <div class="book-author">Carolee Dean</div>
+                        <div class="rating">★★★★☆ (4.0)</div>
+                    </div>
+                    <button class="like-btn" onclick="toggleLike(this)">♡</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- NEW RECIPES SECTION -->
+
+    <section class="recipes-section">
+
+        <h2>Favourite Recipes</h2>
+
+        <div class="recipes-grid">
+
+            <article class="recipe-card">
+                <div class="recipe-icon">🍋</div>
+                <h3>Lemon Drizzle Cake</h3>
+                <p>Bright, soft, and impossible to stop eating.</p>
+            </article>
+
+            <article class="recipe-card">
+                <div class="recipe-icon">🍝</div>
+                <h3>Creamy Tomato Pasta</h3>
+                <p>A reliable comfort-food classic for busy evenings.</p>
+            </article>
+
+            <article class="recipe-card">
+                <div class="recipe-icon">🥣</div>
+                <h3>Pumpkin Soup</h3>
+                <p>Warm, cozy, and perfect with fresh bread.</p>
+            </article>
+
+            <article class="recipe-card">
+                <div class="recipe-icon">🍪</div>
+                <h3>Chocolate Chip Cookies</h3>
+                <p>Crispy edges, soft centre, best enjoyed warm.</p>
+            </article>
+
+        </div>
+
+    </section>
+
+    <div class="inquiry">
+        For inquiry 💌, please send a postcard 📮.
+    </div>
+
+</div>
+
+<script>
+    function toggleLike(button) {
+        button.classList.toggle("liked");
+        button.textContent =
+            button.classList.contains("liked") ? "♥" : "♡";
+    }
+</script>
+
+</body>
+</html>
