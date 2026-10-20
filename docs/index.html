@@ -85,7 +85,7 @@
         }
 
         .interest-card {
-            flex: 1; /* Ensures all 3 hobby elements take up equal width */
+            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -119,13 +119,6 @@
             line-height: 1.4;
         }
 
-        /* Responsive adjustment for small mobile screens */
-        @media (max-width: 500px) {
-            .interests {
-                flex-direction: column;
-            }
-        }
-
         /* Section Titles */
         section {
             width: 100%;
@@ -142,15 +135,69 @@
             display: inline-block;
         }
 
-        /* Grid / List for Books & Recipes - Stacked & Centered */
-        .items-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+        /* Books Section - 2 Columns x 3 Rows Grid */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
             width: 100%;
         }
 
-        .item-card {
+        .book-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 4px;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease;
+        }
+
+        .book-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .book-card .heart-icon {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            color: var(--accent-color);
+            font-size: 1rem;
+        }
+
+        .book-title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--primary-color);
+            margin-top: 4px;
+        }
+
+        .book-author {
+            font-style: italic;
+            color: #666;
+            font-size: 0.88rem;
+        }
+
+        .rating {
+            color: #f39c12;
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+
+        /* Recipes Section - Stacked & Centered */
+        .items-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .recipe-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
@@ -163,28 +210,10 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
 
-        .book-title, .recipe-title {
+        .recipe-title {
             font-weight: 600;
             font-size: 1.1rem;
             color: var(--primary-color);
-        }
-
-        .book-author {
-            font-style: italic;
-            color: #666;
-            font-size: 0.95rem;
-        }
-
-        .rating {
-            color: #f39c12;
-            font-size: 0.9rem;
-            margin-top: 4px;
-        }
-
-        .heart {
-            color: var(--accent-color);
-            font-size: 1.1rem;
-            margin: 5px 0;
         }
 
         .recipe-icon {
@@ -205,6 +234,16 @@
             font-size: 0.95rem;
             color: #777;
             width: 100%;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 500px) {
+            .interests {
+                flex-direction: column;
+            }
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -250,49 +289,45 @@
         <!-- Favourite Books -->
         <section class="books">
             <h2>Favourite Books</h2>
-            <div class="items-list">
+            <div class="books-grid">
                 
-                <div class="item-card">
+                <div class="book-card">
+                    <span class="heart-icon">♡</span>
                     <span class="book-title">Project Hail Mary</span>
                     <span class="book-author">Andy Weir</span>
                     <span class="rating">★★★★☆½ (4.5)</span>
                 </div>
 
-                <div class="heart">♡</div>
-
-                <div class="item-card">
+                <div class="book-card">
+                    <span class="heart-icon">♡</span>
                     <span class="book-title">The Long Way to a Small Angry Planet</span>
                     <span class="book-author">Becky Chambers</span>
                     <span class="rating">★★★★☆ (4.0)</span>
                 </div>
 
-                <div class="heart">♡</div>
-
-                <div class="item-card">
+                <div class="book-card">
+                    <span class="heart-icon">♡</span>
                     <span class="book-title">The Safekeep</span>
                     <span class="book-author">Yael van der Wouden</span>
                     <span class="rating">★★★★☆½ (4.5)</span>
                 </div>
 
-                <div class="heart">♡</div>
-
-                <div class="item-card">
+                <div class="book-card">
+                    <span class="heart-icon">♡</span>
                     <span class="book-title">Klara and the Sun</span>
                     <span class="book-author">Kazuo Ishiguro</span>
                     <span class="rating">★★★★☆ (4.0)</span>
                 </div>
 
-                <div class="heart">♡</div>
-
-                <div class="item-card">
+                <div class="book-card">
+                    <span class="heart-icon">♡</span>
                     <span class="book-title">Prima Facie</span>
                     <span class="book-author">Suzie Miller</span>
                     <span class="rating">★★★★★ (5.0)</span>
                 </div>
 
-                <div class="heart">♡</div>
-
-                <div class="item-card">
+                <div class="book-card">
+                    <span class="heart-icon">♡</span>
                     <span class="book-title">Yesteryear</span>
                     <span class="book-author">Carolee Dean</span>
                     <span class="rating">★★★★☆ (4.0)</span>
@@ -306,25 +341,25 @@
             <h2>Favourite Recipes</h2>
             <div class="items-list">
                 
-                <div class="item-card">
+                <div class="recipe-card">
                     <div class="recipe-icon">🍋</div>
                     <span class="recipe-title">Lemon Drizzle Cake</span>
                     <span class="recipe-desc">Bright, soft, and impossible to stop eating.</span>
                 </div>
 
-                <div class="item-card">
+                <div class="recipe-card">
                     <div class="recipe-icon">🍝</div>
                     <span class="recipe-title">Creamy Tomato Pasta</span>
                     <span class="recipe-desc">A reliable comfort-food classic for busy evenings.</span>
                 </div>
 
-                <div class="item-card">
+                <div class="recipe-card">
                     <div class="recipe-icon">🥣</div>
                     <span class="recipe-title">Pumpkin Soup</span>
                     <span class="recipe-desc">Warm, cozy, and perfect with fresh bread.</span>
                 </div>
 
-                <div class="item-card">
+                <div class="recipe-card">
                     <div class="recipe-icon">🍪</div>
                     <span class="recipe-title">Chocolate Chip Cookies</span>
                     <span class="recipe-desc">Crispy edges, soft centre, best enjoyed warm.</span>
