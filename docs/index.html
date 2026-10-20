@@ -69,25 +69,31 @@
         /* Bio Section */
         .bio {
             display: flex;
-            flex-direction: flex-col;
             flex-direction: column;
             gap: 15px;
             font-size: 1.05rem;
         }
 
-        /* Interests Badges/Cards */
+        /* Interests / Hobbies - Arranged horizontally in equal sizes */
         .interests {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             gap: 15px;
             width: 100%;
+            justify-content: center;
+            align-items: stretch;
         }
 
         .interest-card {
+            flex: 1; /* Ensures all 3 hobby elements take up equal width */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 20px;
+            padding: 20px 15px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.02);
             transition: transform 0.2s ease;
         }
@@ -104,11 +110,20 @@
         .interest-card h3 {
             color: var(--primary-color);
             margin-bottom: 5px;
+            font-size: 1rem;
         }
 
         .interest-card p {
-            font-size: 0.95rem;
+            font-size: 0.88rem;
             color: #666;
+            line-height: 1.4;
+        }
+
+        /* Responsive adjustment for small mobile screens */
+        @media (max-width: 500px) {
+            .interests {
+                flex-direction: column;
+            }
         }
 
         /* Section Titles */
@@ -211,7 +226,7 @@
             <p>Whether it's listening to fascinating conversations, creating a little magic ✨ in the kitchen, exploring new worlds through reading, or photographing beautiful details, I enjoy the small things that make everyday life interesting.</p>
         </section>
 
-        <!-- Interests -->
+        <!-- Interests / Hobbies -->
         <section class="interests">
             <div class="interest-card">
                 <div class="icon">🎧</div>
