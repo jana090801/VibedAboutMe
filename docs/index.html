@@ -4,437 +4,326 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jana Pohlmann</title>
-
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary-color: #333;
+            --accent-color: #ff94b8;
+            --bg-color: #faf8f5;
+            --card-bg: #ffffff;
+            --border-color: #eeddd8;
+            --text-color: #4a4a4a;
         }
 
-        :root {
-            --sage: #d8e2d0;
-            --pink: #DCE0D9;
-            --white: #fff;
-            --dark-green: #21295C;
-            --text: #0B0D1E;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: var(--sage);
-            color: var(--text);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .card {
-            background: var(--pink);
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 32px;
-            border-radius: 24px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .avatar {
-            width: 110px;
-            height: 110px;
-            margin: 0 auto 15px;
-            border-radius: 50%;
-            background: white;
-            border: 2px solid pink;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
             display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 56px;
+            padding: 40px 20px;
         }
 
-        h1 {
-            font-family: "Times New Roman", Times, serif;
-            font-size: 3rem;
-            margin-bottom: 10px;
-            color: #111827;
-        }
-
-        .subtitle {
-            font-style: italic;
-            color: #555;
-            font-size: 1.1rem;
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        p {
-            line-height: 1.7;
-            margin-bottom: 18px;
-        }
-
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            margin-top: 25px;
-        }
-
-        .skill-card {
-            background: #fff8fb;
-            border-radius: 18px;
-            padding: 18px;
-            text-align: center;
-            box-shadow: 8px 8px 12px rgba(53, 94, 59, 0.12);
-        }
-
-        .skill-image {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .skill-title {
-            color: var(--dark-green);
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .skill-text {
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .books-section h2,
-        .recipes-section h2 {
-            font-family: "Times New Roman", Times, serif;
-            color: var(--dark-green);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .books-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .book-item {
-            background: rgba(255,255,255,0.7);
-            border-radius: 14px;
-            padding: 14px;
+        /* Container limits the body width to create generous space on both sides */
+        .container {
+            width: 100%;
+            max-width: 650px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 40px;
+        }
+
+        /* Header Styling */
+        header {
+            display: flex;
+            flex-direction: column;
             align-items: center;
             gap: 10px;
         }
 
-        .book-title {
-            font-weight: bold;
+        .avatar {
+            font-size: 3rem;
+            margin-bottom: -10px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .tagline {
             font-size: 0.95rem;
-            margin-bottom: 4px;
+            color: #777;
+            letter-spacing: 0.5px;
         }
 
-        .book-author {
-            color: #666;
-            font-size: 0.85rem;
-            margin-bottom: 4px;
+        /* Bio Section */
+        .bio {
+            display: flex;
+            flex-direction: flex-col;
+            flex-direction: column;
+            gap: 15px;
+            font-size: 1.05rem;
         }
 
-        .rating {
-            color: #d97706;
-            font-size: 0.85rem;
+        /* Interests Badges/Cards */
+        .interests {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
         }
 
-        .like-btn {
-            border: none;
-            background: white;
-            border-radius: 999px;
-            width: 38px;
-            height: 38px;
-            cursor: pointer;
-            font-size: 1rem;
-            flex-shrink: 0;
+        .interest-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease;
         }
 
-        .liked {
-            background: #ffd6e7;
+        .interest-card:hover {
+            transform: translateY(-2px);
         }
 
-        /* NEW RECIPES SECTION */
-
-        .recipes-section {
-            margin-top: 20px;
-            margin-bottom: 30px;
-        }
-
-        .recipes-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .recipe-card {
-            background: rgba(255,255,255,0.7);
-            border-radius: 18px;
-            padding: 18px;
-            text-align: center;
-            box-shadow: 6px 6px 12px rgba(53,94,59,0.12);
-        }
-
-        .recipe-icon {
+        .interest-card .icon {
             font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .recipe-card h3 {
-            color: var(--dark-green);
-            font-size: 1rem;
             margin-bottom: 8px;
         }
 
-        .recipe-card p {
-            font-size: 0.85rem;
-            margin: 0;
-            line-height: 1.5;
+        .interest-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
         }
 
-        .inquiry {
-            margin-top: 30px;
-            text-align: center;
-            font-family: "Times New Roman", Times, serif;
-            font-size: 1rem;
-            line-height: 1.7;
+        .interest-card p {
+            font-size: 0.95rem;
+            color: #666;
         }
 
-        @media (max-width: 1100px) {
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .recipes-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        /* Section Titles */
+        section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        @media (max-width: 800px) {
+        h2 {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
 
-            .books-grid {
-                grid-template-columns: 1fr;
-            }
+        /* Grid / List for Books & Recipes - Stacked & Centered */
+        .items-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
 
-            .skills {
-                grid-template-columns: 1fr;
-            }
+        .item-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 18px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            width: 100%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
 
-            .recipes-grid {
-                grid-template-columns: 1fr;
-            }
+        .book-title, .recipe-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
 
-            .card {
-                padding: 24px;
-            }
+        .book-author {
+            font-style: italic;
+            color: #666;
+            font-size: 0.95rem;
+        }
 
-            h1 {
-                font-size: 2.3rem;
-            }
+        .rating {
+            color: #f39c12;
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        .heart {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            margin: 5px 0;
+        }
+
+        .recipe-icon {
+            font-size: 1.8rem;
+            margin-bottom: 4px;
+        }
+
+        .recipe-desc {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            color: #777;
+            width: 100%;
         }
     </style>
 </head>
 <body>
 
-<div class="card">
+    <div class="container">
+        
+        <!-- Header -->
+        <header>
+            <div class="avatar">🧚🏻‍♀️</div>
+            <h1>Jana Pohlmann</h1>
+            <p class="tagline">podcast enthusiast • kitchen fairy • book worm • photographing</p>
+        </header>
 
-    <div class="header">
+        <!-- Bio -->
+        <section class="bio">
+            <p>Hello 👋! I'm Jana. I spend a lot of my free time discovering new podcasts, getting creative in the kitchen, disappearing into the pages of a good book, and capturing everyday moments with a camera.</p>
+            <p>I'm happiest when I'm learning something new, trying a recipe that might become a favorite 💗, or finding a story that keeps me awake far past bedtime.</p>
+            <p>Whether it's listening to fascinating conversations, creating a little magic ✨ in the kitchen, exploring new worlds through reading, or photographing beautiful details, I enjoy the small things that make everyday life interesting.</p>
+        </section>
 
-        <div class="avatar">🧚🏻‍♀️</div>
-
-        <h1>Jana Pohlmann</h1>
-
-        <div class="subtitle">
-            podcast enthusiast • kitchen fairy • book worm • photographing
-        </div>
-
-    </div>
-
-    <div class="content-grid">
-
-        <div class="about-section">
-
-            <p>
-                Hello 👋! I'm Jana. I spend a lot of my free time discovering
-                new podcasts, getting creative in the kitchen, disappearing
-                into the pages of a good book, and capturing everyday moments
-                with a camera.
-            </p>
-
-            <p>
-                I'm happiest when I'm learning something new, trying a recipe
-                that might become a favorite 💗, or finding a story that keeps
-                me awake far past bedtime.
-            </p>
-
-            <p>
-                Whether it's listening to fascinating conversations, creating
-                a little magic ✨ in the kitchen, exploring new worlds through
-                reading, or photographing beautiful details, I enjoy the small
-                things that make everyday life interesting.
-            </p>
-
-            <div class="skills">
-
-                <div class="skill-card">
-                    <div class="skill-image">🎧</div>
-                    <div class="skill-title">Podcast Enthusiast</div>
-                    <div class="skill-text">
-                        Always searching for fascinating conversations and
-                        compelling stories.
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-image">🧁</div>
-                    <div class="skill-title">Kitchen Fairy</div>
-                    <div class="skill-text">
-                        Baking, experimenting with recipes, and sharing
-                        comforting food.
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-image">📷</div>
-                    <div class="skill-title">Photography</div>
-                    <div class="skill-text">
-                        Capturing little moments, interesting places,
-                        and everyday beauty.
-                    </div>
-                </div>
-
+        <!-- Interests -->
+        <section class="interests">
+            <div class="interest-card">
+                <div class="icon">🎧</div>
+                <h3>Podcast Enthusiast</h3>
+                <p>Always searching for fascinating conversations and compelling stories.</p>
             </div>
+            
+            <div class="interest-card">
+                <div class="icon">🧁</div>
+                <h3>Kitchen Fairy</h3>
+                <p>Baking, experimenting with recipes, and sharing comforting food.</p>
+            </div>
+            
+            <div class="interest-card">
+                <div class="icon">📷</div>
+                <h3>Photography</h3>
+                <p>Capturing little moments, interesting places, and everyday beauty.</p>
+            </div>
+        </section>
 
-        </div>
-
-        <div class="books-section">
-
+        <!-- Favourite Books -->
+        <section class="books">
             <h2>Favourite Books</h2>
-
-            <div class="books-grid">
-
-                <div class="book-item">
-                    <div>
-                        <div class="book-title">Project Hail Mary</div>
-                        <div class="book-author">Andy Weir</div>
-                        <div class="rating">★★★★☆½ (4.5)</div>
-                    </div>
-                    <button class="like-btn" onclick="toggleLike(this)">♡</button>
+            <div class="items-list">
+                
+                <div class="item-card">
+                    <span class="book-title">Project Hail Mary</span>
+                    <span class="book-author">Andy Weir</span>
+                    <span class="rating">★★★★☆½ (4.5)</span>
                 </div>
 
-                <div class="book-item">
-                    <div>
-                        <div class="book-title">The Long Way to a Small Angry Planet</div>
-                        <div class="book-author">Becky Chambers</div>
-                        <div class="rating">★★★★☆ (4.0)</div>
-                    </div>
-                    <button class="like-btn" onclick="toggleLike(this)">♡</button>
+                <div class="heart">♡</div>
+
+                <div class="item-card">
+                    <span class="book-title">The Long Way to a Small Angry Planet</span>
+                    <span class="book-author">Becky Chambers</span>
+                    <span class="rating">★★★★☆ (4.0)</span>
                 </div>
 
-                <div class="book-item">
-                    <div>
-                        <div class="book-title">The Safekeep</div>
-                        <div class="book-author">Yael van der Wouden</div>
-                        <div class="rating">★★★★☆½ (4.5)</div>
-                    </div>
-                    <button class="like-btn" onclick="toggleLike(this)">♡</button>
+                <div class="heart">♡</div>
+
+                <div class="item-card">
+                    <span class="book-title">The Safekeep</span>
+                    <span class="book-author">Yael van der Wouden</span>
+                    <span class="rating">★★★★☆½ (4.5)</span>
                 </div>
 
-                <div class="book-item">
-                    <div>
-                        <div class="book-title">Klara and the Sun</div>
-                        <div class="book-author">Kazuo Ishiguro</div>
-                        <div class="rating">★★★★☆ (4.0)</div>
-                    </div>
-                    <button class="like-btn" onclick="toggleLike(this)">♡</button>
+                <div class="heart">♡</div>
+
+                <div class="item-card">
+                    <span class="book-title">Klara and the Sun</span>
+                    <span class="book-author">Kazuo Ishiguro</span>
+                    <span class="rating">★★★★☆ (4.0)</span>
                 </div>
 
-                <div class="book-item">
-                    <div>
-                        <div class="book-title">Prima Facie</div>
-                        <div class="book-author">Suzie Miller</div>
-                        <div class="rating">★★★★★ (5.0)</div>
-                    </div>
-                    <button class="like-btn" onclick="toggleLike(this)">♡</button>
+                <div class="heart">♡</div>
+
+                <div class="item-card">
+                    <span class="book-title">Prima Facie</span>
+                    <span class="book-author">Suzie Miller</span>
+                    <span class="rating">★★★★★ (5.0)</span>
                 </div>
 
-                <div class="book-item">
-                    <div>
-                        <div class="book-title">Yesteryear</div>
-                        <div class="book-author">Carolee Dean</div>
-                        <div class="rating">★★★★☆ (4.0)</div>
-                    </div>
-                    <button class="like-btn" onclick="toggleLike(this)">♡</button>
+                <div class="heart">♡</div>
+
+                <div class="item-card">
+                    <span class="book-title">Yesteryear</span>
+                    <span class="book-author">Carolee Dean</span>
+                    <span class="rating">★★★★☆ (4.0)</span>
                 </div>
 
             </div>
+        </section>
 
-        </div>
+        <!-- Favourite Recipes -->
+        <section class="recipes">
+            <h2>Favourite Recipes</h2>
+            <div class="items-list">
+                
+                <div class="item-card">
+                    <div class="recipe-icon">🍋</div>
+                    <span class="recipe-title">Lemon Drizzle Cake</span>
+                    <span class="recipe-desc">Bright, soft, and impossible to stop eating.</span>
+                </div>
+
+                <div class="item-card">
+                    <div class="recipe-icon">🍝</div>
+                    <span class="recipe-title">Creamy Tomato Pasta</span>
+                    <span class="recipe-desc">A reliable comfort-food classic for busy evenings.</span>
+                </div>
+
+                <div class="item-card">
+                    <div class="recipe-icon">🥣</div>
+                    <span class="recipe-title">Pumpkin Soup</span>
+                    <span class="recipe-desc">Warm, cozy, and perfect with fresh bread.</span>
+                </div>
+
+                <div class="item-card">
+                    <div class="recipe-icon">🍪</div>
+                    <span class="recipe-title">Chocolate Chip Cookies</span>
+                    <span class="recipe-desc">Crispy edges, soft centre, best enjoyed warm.</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>For inquiry 💌, please send a postcard 📮.</p>
+        </footer>
 
     </div>
-
-    <!-- NEW RECIPES SECTION -->
-
-    <section class="recipes-section">
-
-        <h2>Favourite Recipes</h2>
-
-        <div class="recipes-grid">
-
-            <article class="recipe-card">
-                <div class="recipe-icon">🍋</div>
-                <h3>Lemon Drizzle Cake</h3>
-                <p>Bright, soft, and impossible to stop eating.</p>
-            </article>
-
-            <article class="recipe-card">
-                <div class="recipe-icon">🍝</div>
-                <h3>Creamy Tomato Pasta</h3>
-                <p>A reliable comfort-food classic for busy evenings.</p>
-            </article>
-
-            <article class="recipe-card">
-                <div class="recipe-icon">🥣</div>
-                <h3>Pumpkin Soup</h3>
-                <p>Warm, cozy, and perfect with fresh bread.</p>
-            </article>
-
-            <article class="recipe-card">
-                <div class="recipe-icon">🍪</div>
-                <h3>Chocolate Chip Cookies</h3>
-                <p>Crispy edges, soft centre, best enjoyed warm.</p>
-            </article>
-
-        </div>
-
-    </section>
-
-    <div class="inquiry">
-        For inquiry 💌, please send a postcard 📮.
-    </div>
-
-</div>
-
-<script>
-    function toggleLike(button) {
-        button.classList.toggle("liked");
-        button.textContent =
-            button.classList.contains("liked") ? "♥" : "♡";
-    }
-</script>
 
 </body>
 </html>
