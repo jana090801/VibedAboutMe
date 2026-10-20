@@ -13,205 +13,105 @@
         }
 
         :root {
-            --sage: #d8e2d0;
-            --pink: #f3cddd;
-            --white: #fff;
-            --dark-green: #355e3b;
-            --text: #333;
-        }
+    --ebony-white: #F6F2EC;
+    --base: #EEE3AB;
+    --accent-green: #80A19C;
+    --accent-stone: #D9CFC1;
+    --text: #3A2E25;
+    --card-white: #FAF8F4;
+    --shadow: rgba(58, 46, 37, 0.12);
+}
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: var(--sage);
-            color: var(--text);
-            min-height: 100vh;
-            padding: 20px;
-        }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--ebony-white);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 20px;
+}
 
-        .card {
-            background: var(--pink);
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 32px;
-            border-radius: 24px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
+.card {
+    background: var(--base);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 32px;
+    border-radius: 24px;
+    box-shadow: 0 15px 40px var(--shadow);
+}
 
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+h1 {
+    color: var(--text);
+    font-family: "Times New Roman", Times, serif;
+}
 
-        .avatar {
-            width: 110px;
-            height: 110px;
-            margin: 0 auto 15px;
-            border-radius: 50%;
-            background: white;
-            border: 2px solid pink;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 56px;
-        }
+.subtitle {
+    color: var(--accent-green);
+    font-style: italic;
+}
 
-        h1 {
-            font-family: "Times New Roman", Times, serif;
-            font-size: 3rem;
-            margin-bottom: 10px;
-            color: #111827;
-        }
+.avatar {
+    background: white;
+    border: 2px solid var(--accent-stone);
+}
 
-        .subtitle {
-            font-style: italic;
-            color: #555;
-            font-size: 1.1rem;
-        }
+.skill-card {
+    background: var(--card-white);
+    border-radius: 18px;
+    box-shadow: 8px 8px 12px var(--shadow);
+}
 
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
+.skill-title {
+    color: var(--accent-green);
+}
 
-        p {
-            line-height: 1.7;
-            margin-bottom: 18px;
-        }
+.books-section h2,
+.recipes-section h2 {
+    color: var(--accent-green);
+    font-family: "Times New Roman", Times, serif;
+}
 
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            margin-top: 25px;
-        }
+.book-item {
+    background: var(--card-white);
+}
 
-        .skill-card {
-            background: #fff8fb;
-            border-radius: 18px;
-            padding: 18px;
-            text-align: center;
-            box-shadow: 8px 8px 12px rgba(53, 94, 59, 0.12);
-        }
+.recipe-card {
+    background: var(--card-white);
+    box-shadow: 6px 6px 12px var(--shadow);
+}
 
-        .skill-image {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
+.recipe-card h3 {
+    color: var(--accent-green);
+}
 
-        .skill-title {
-            color: var(--dark-green);
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
+.book-author,
+.skill-text,
+.recipe-card p {
+    color: #5A4A3F;
+}
 
-        .skill-text {
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
+.rating {
+    color: #8A6A32;
+}
 
-        .books-section h2,
-        .recipes-section h2 {
-            font-family: "Times New Roman", Times, serif;
-            color: var(--dark-green);
-            margin-bottom: 20px;
-            text-align: center;
-        }
+.like-btn {
+    background: white;
+    color: var(--text);
+}
 
-        .books-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
+.like-btn.liked,
+.liked {
+    background: var(--accent-stone);
+}
 
-        .book-item {
-            background: rgba(255,255,255,0.7);
-            border-radius: 14px;
-            padding: 14px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-        }
+.inquiry {
+    color: var(--text);
+    font-family: "Times New Roman", Times, serif;
+}
 
-        .book-title {
-            font-weight: bold;
-            font-size: 0.95rem;
-            margin-bottom: 4px;
-        }
-
-        .book-author {
-            color: #666;
-            font-size: 0.85rem;
-            margin-bottom: 4px;
-        }
-
-        .rating {
-            color: #d97706;
-            font-size: 0.85rem;
-        }
-
-        .like-btn {
-            border: none;
-            background: white;
-            border-radius: 999px;
-            width: 38px;
-            height: 38px;
-            cursor: pointer;
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
-
-        .liked {
-            background: #ffd6e7;
-        }
-
-        /* NEW RECIPES SECTION */
-
-        .recipes-section {
-            margin-top: 20px;
-            margin-bottom: 30px;
-        }
-
-        .recipes-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .recipe-card {
-            background: rgba(255,255,255,0.7);
-            border-radius: 18px;
-            padding: 18px;
-            text-align: center;
-            box-shadow: 6px 6px 12px rgba(53,94,59,0.12);
-        }
-
-        .recipe-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .recipe-card h3 {
-            color: var(--dark-green);
-            font-size: 1rem;
-            margin-bottom: 8px;
-        }
-
-        .recipe-card p {
-            font-size: 0.85rem;
-            margin: 0;
-            line-height: 1.5;
-        }
-
-        .inquiry {
-            margin-top: 30px;
-            text-align: center;
-            font-family: "Times New Roman", Times, serif;
-            font-size: 1rem;
-            line-height: 1.7;
-        }
+.book-title {
+    color: var(--text);
+    font-weight: bold;
+}
 
         @media (max-width: 1100px) {
             .content-grid {
